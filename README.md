@@ -1,2 +1,3 @@
-# Board Game Utils
+# 🎲 Board Game Utils 🛠
 
+Various board game utilities.
