@@ -4,14 +4,16 @@
 
 import logging
 
+from itertools import islice
+from typing import Generator, Iterable, Optional
+
 import requests
 
 LOGGER = logging.getLogger(__name__)
 BASE_URL = "https://recommend.games"
 
 
-def recommend_games(base_url=BASE_URL, **params):
-    """Call to Recommend.Games."""
+def _recommend_games(base_url: str, **params) -> Generator[dict, None, None]:
 
     url = f"{base_url}/api/games/recommend/"
     params.setdefault("page", 1)
@@ -46,3 +48,14 @@ def recommend_games(base_url=BASE_URL, **params):
             return
 
         params["page"] += 1
+
+
+def recommend_games(
+    base_url: str = BASE_URL,
+    max_results: Optional[int] = 25,
+    **params,
+) -> Iterable[dict]:
+    """Call to Recommend.Games."""
+
+    results = _recommend_games(base_url=base_url, **params)
+    return islice(results, max_results) if max_results else results
