@@ -34,18 +34,17 @@ REQUIRES_PYTHON = ">=3.6.0"
 VERSION = None  # will be read from __version__.py
 
 # What packages are required for this module to be executed?
-REQUIRED = (
-    "numpy",
-    "pandas",
-    "pytility",
-    "requests",
-    "scikit-learn",
-    "scipy",
-)
+REQUIRED = ("requests",)
 
 # What packages are optional?
 EXTRAS = {
-    # "cloud": ("smart-open>=1.8.1",),
+    "ml": (
+        "numpy",
+        "pandas",
+        "pytility",
+        "scikit-learn",
+        "scipy",
+    ),
 }
 
 # The rest you shouldn't have to touch too much :)
@@ -159,6 +158,7 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Topic :: Games/Entertainment :: Board Games",
     ],
     # $ setup.py publish support.
